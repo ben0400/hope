@@ -1,0 +1,24 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+{% for pro in product %}
+<script type="text/javascript" src="{% static 'js/carte.js' %}"></script>
+<div style="margin-left: 40px; margin-top:40px; float: left" >
+
+<img src={{pro.image.url}} width='150' height="150">
+
+<br>
+<div style="border-left: 1px solid grey;height: 200px; margin-left:300px ;"></div>
+<hr width="200">
+
+<h2>{{pro}}</h2>
+
+
+<h3 style="margin-left: 150px;">{{pro.price}}</h3>
+<br>
+<button data-product="{{pro.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
+
+</div>	
+{% endfor %}	
+		
+{% endblock content %}

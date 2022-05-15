@@ -1,0 +1,74 @@
+{% extends 'store/main.html' %}
+{% block content %}
+<br>
+<br>
+<br>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Product</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Price</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  {% if request.user.is_authenticated %}
+  {% for i in items  %}
+  <tbody>
+    <tr>
+      <th scope="row">{{i.product}}</th>
+      <td>{{i.quantity}}</td>
+      <td>{{i.product.price}}</td>
+      <td><a href="">&#9746;</a></td>
+    </tr>
+    
+    
+  </tbody>
+  {% endfor %}
+ 
+  {% endif %}
+
+</table>
+
+
+<br>
+<h1>Total: {{order.TotalC | floatformat:2}} </h1>
+<br>
+<br>
+<h1>Items: {{order.TotalItems}} </h1>
+<br>
+<br>
+<div class="input-group">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="">Adress</span>
+    </div>
+    <input type="text" class="form-control">
+  </div>
+  <div class="input-group">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="">city</span>
+    </div>
+    <input type="text" class="form-control">
+    
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="">state</span>
+      </div>
+      <input type="text" class="form-control">
+      
+      
+    </div> 
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="">zipcode</span>
+      </div>
+      <input type="number" class="form-control">
+      
+      
+    </div>
+    
+  </div>
+  <br>
+  <a href=""><button  class="btn btn-outline-secondary add-btn ">Checkout</button></a>
+
+  {% endblock content %}

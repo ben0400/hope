@@ -1,0 +1,41 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+<br>
+<br>
+<br>
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Product</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Price</th>
+        <th scope="col">Delete</th>
+        <th scope="col">Total</th>
+        <th scope="col">-1</th>
+        <th scope="col">+1</th>
+      </tr>
+    </thead>
+    {% if request.user.is_authenticated %}
+    {% for i in items  %}
+    <tbody>
+      <tr>
+        <th scope="row">{{i.product}}</th>
+        <td>{{i.quantity}}</td>
+        <td>{{i.product.price}}</td>
+        <td><p><img data-product="{{i.product.id}}" data-action="delete" class=" update-cart" src="https://cdn-icons-png.flaticon.com/512/1828/1828843.png" width="16" height="16"></p>
+        <td>{{i.TotalPrice | floatformat:2}}</td>
+        <td><a  href="" data-product="{{i.product.id}}" data-action="remove" class=" update-cart">&#x2193;</a></td>
+        <td><a href="" data-product="{{i.product.id}}" data-action="add" class=" update-cart">&#x2191;</a></td>
+      </tr>
+      
+      
+    </tbody>
+    {% endfor %}
+    {% endif %}
+  </table>
+  
+  <a href="{% url 'checkout' %}"><button  class="btn btn-outline-secondary add-btn ">Checkout</button></a>
+
+{% endblock content %}

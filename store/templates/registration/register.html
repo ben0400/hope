@@ -1,0 +1,20 @@
+{% extends "store/main.html" %}
+
+{% block content %}
+
+
+
+
+
+<div class="container ">
+	<h1 >Register</h1>
+	<br>
+	<form method="post">
+		{% csrf_token %}
+		{{form.as_p}}
+		<button type="submit" class="btn btn-primary dark" data-mdb-ripple-color="dark">Sign Up</button>
+
+	</form>
+</div>
+
+{% endblock %}
